@@ -1,24 +1,29 @@
-<div class="container">
-  <hr>
-  <div class="row">
-    <!-- Product  -->
-    {{#each tecnologia}}
-    <div class="col-md-3 product-grid">
-      <div class="image">
-        <img src={{Imagen}} class="w-100 h-50">
+<div class="tecnologia-page">
+  <div class="container">
+    <hr>
+    <div class="row">
+      <!-- Product  -->
+      {{#each tecnologia}}
+      <div class="col-md-3 product-grid">
+        <div class="image">
+          <img src={{Imagen}} class="w-100 h-50">
+        </div>
+
+        <div class="product-info">
+          <h5 class="text-center tecnologia-title">{{Nombre_Tec}}</h5>
+          <h5 class="text-center tecnologia-price">Precio: ${{Precio}}</h5>
+        </div>
+
+        <form action="/carrito/agregarproducto" method="POST" class="add-to-cart-form">
+          <input type="hidden" name="cantidad" value="1">
+          <input type="hidden" name="id" value={{Id_Tecnologia}}>
+          <button type="submit" class="btn buy">
+            AGREGAR AL CARRITO
+          </button>
+        </form>
+
       </div>
-      <h5 class="text-center">{{Nombre_Tec}}</h5>
-      <h5 class="text-center">Precio: ${{Precio}}</h5>
-      <form action="/carrito/agregarproducto" method="POST">
-        <input type="hidden" name="cantidad" value="1">
-        <input type="hidden" name="id" value={{Id_Tecnologia}}>
-        <button type="submit" class="btn buy">
-          AGREGAR AL CARRITO
-        </button>
-      </form>
-
+      {{/each}}
     </div>
-    {{/each}}
   </div>
-
 </div>

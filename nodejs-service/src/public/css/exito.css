@@ -1,28 +1,28 @@
-.exito {
-    padding: 20px;
-    background-color: #4CAF50;
-    color: white;
-    width: 30%;
-    margin: auto;
-    left: 0;
-    position: absolute; 
-    right: 0;
-    text-align: center; 
-    top: 1em;
-    z-index: 1;
-  }
-  
-.closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
+/* exito.css */
+.exito { /* Similar to .alert but for success */
+  padding: 15px 20px;
+  background-color: #28a745; /* THEME: Success color */
+  color: white;
+  width: auto;
+  max-width: 500px;
+  margin: 1em auto;
+  text-align: center;
+  z-index: 1050;
+  border-radius: 0.25rem; /* THEME: Border radius */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
-  
-.closebtn:hover {
-    color: black;
+
+.exito .closebtn { /* Scoped */
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.exito .closebtn:hover {
+  color: #212529; /* Darker color */
 }

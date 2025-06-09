@@ -1,117 +1,129 @@
-<div class="container mt-3">
+<div class="inicio-page"> {{!-- Contenedor principal con la clase .inicio-page --}}
 
-  <h2>Librería L</h2>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div class="container mt-3">
+    <h2>Librería L</h2>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-    <!-- Indicators -->
-    <ul class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-      <li data-target="#myCarousel" data-slide-to="4"></li>
-      <li data-target="#myCarousel" data-slide-to="5"></li>
+      <ul class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+        <li data-target="#myCarousel" data-slide-to="5"></li>
+      </ul>
 
-    </ul>
-
-    <!-- The slideshow -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://porrua.mx/media/catalog/tmp/category/Biografia-e-historias-reales.jpg" id="imgx">
-      </div>
-      <div class="carousel-item">
-        <img src="https://porrua.mx/media/catalog/tmp/category/Consulta.jpg" id="imgx">
-      </div>
-      <div class="carousel-item">
-        <img src="https://porrua.mx/media/catalog/tmp/category/EstiloVidaDeporteOcio.jpg" id="imgx">
-      </div>
-      <div class="carousel-item">
-        <img src="https://porrua.mx/media/catalog/tmp/category/Ficcion.jpg" id="imgx">
-      </div>
-      <div class="carousel-item">
-        <img src="https://porrua.mx/media/catalog/tmp/category/InfantilesJuvenilesDid.jpg" id="imgx">
-      </div>
-      <div class="carousel-item">
-        <img src="https://porrua.mx/media/catalog/tmp/category/Literatura.jpg" id="imgx">
-      </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </a>
-  </div>
-
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Libros <b>Recientes</b></h2>
-      <div id="productCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#productCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#productCarousel" data-slide-to="1"></li>
-          <li data-target="#productCarousel" data-slide-to="2"></li>
-        </ol>
-        <!-- Wrapper for carousel items -->
-        <div class="carousel-inner">
-          {{#each libros}}
-          {{#if (ifEquals @index 0)}}
-          <div class="carousel-item active">
-            <div class="row">
-              {{#each this}}
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <a href="/libro/{{Id_Libro}}">
-                    <div class="img-box">
-                      <img src={{Imagen}} class="img-fluid rounded" alt="">
-                    </div>
-                  </a>
-                  <div class="thumb-content">
-                    <h4>{{Nombre}}</h4>
-                    <p class="item-price"><span>${{Precio}}</span></p>
-                  </div>
-                </div>
-              </div>
-              {{/each}}
-
-            </div>
-          </div>
-          {{else}}
-          <div class="carousel-item">
-            <div class="row">
-              {{#each this}}
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <a href="/libro/{{Id_Libro}}">
-                    <div class="img-box">
-                      <img src={{Imagen}} class="img-fluid rounded" alt="">
-                    </div>
-                  </a>
-                  <div class="thumb-content">
-                    <h4>{{Nombre}}</h4>
-                    <p class="item-price"><span>${{Precio}}</span></p>
-                  </div>
-                </div>
-              </div>
-              {{/each}}
-            </div>
-          </div>
-          {{/if}}
-          {{/each}}
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+       
+          <img src="https://porrua.mx/media/catalog/tmp/category/Biografia-e-historias-reales.jpg"
+            alt="Biografia e historias reales" style="object-fit: cover; width:100%; max-height: 400px;"> {{!-- Ajusta
+          el estilo en línea o crea una clase específica si es necesario --}}
         </div>
-        <!-- Carousel controls -->
-        <a class="carousel-control-prev" href="#productCarousel" data-slide="prev">
-          <i class="fa fa-angle-left"></i>
-        </a>
-        <a class="carousel-control-next" href="#productCarousel" data-slide="next">
-          <i class="fa fa-angle-right"></i>
-        </a>
+        <div class="carousel-item">
+          <img src="https://porrua.mx/media/catalog/tmp/category/Consulta.jpg" alt="Consulta"
+            style="object-fit: cover; width:100%; max-height: 400px;">
+        </div>
+        <div class="carousel-item">
+          <img src="https://porrua.mx/media/catalog/tmp/category/EstiloVidaDeporteOcio.jpg"
+            alt="Estilo de Vida, Deporte y Ocio" style="object-fit: cover; width:100%; max-height: 400px;">
+        </div>
+        <div class="carousel-item">
+          <img src="https://porrua.mx/media/catalog/tmp/category/Ficcion.jpg" alt="Ficcion"
+            style="object-fit: cover; width:100%; max-height: 400px;">
+        </div>
+        <div class="carousel-item">
+          <img src="https://porrua.mx/media/catalog/tmp/category/InfantilesJuvenilesDid.jpg"
+            alt="Infantiles, Juveniles y Didácticos" style="object-fit: cover; width:100%; max-height: 400px;">
+        </div>
+        <div class="carousel-item">
+          <img src="https://porrua.mx/media/catalog/tmp/category/Literatura.jpg" alt="Literatura"
+            style="object-fit: cover; width:100%; max-height: 400px;">
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="container"> 
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Libros <b>Recientes</b></h2>
+        <div id="productCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+          <ol class="carousel-indicators">
+            {{#each libros}}
+            {{#if @first}}
+            <li data-target="#productCarousel" data-slide-to="{{@index}}" class="active"></li>
+            {{else}}
+            <li data-target="#productCarousel" data-slide-to="{{@index}}"></li>
+            {{/if}}
+            {{/each}}
+        
+          </ol>
+          <div class="carousel-inner">
+            {{#each libros}}
+            {{#if @first}} {{!-- Usar @first es más semántico para el primer elemento --}}
+            <div class="carousel-item active">
+              <div class="row">
+                {{#each this}} {{!-- 'this' se refiere al array de libros para este slide --}}
+                <div class="col-sm-3">
+                  <div class="thumb-wrapper">
+                    <a href="/libro/{{Id_Libro}}">
+                      <div class="img-box">
+                        <img src="{{Imagen}}" class="img-fluid" alt="{{Nombre}}"> {{!-- Quitado 'rounded' si el CSS lo
+                        maneja o si prefieres bordes rectos --}}
+                      </div>
+                    </a>
+                    <div class="thumb-content">
+                      <h4>{{Nombre}}</h4>
+                      <p class="item-price"><span>${{Precio}}</span></p>
+                      {{!-- Podrías añadir un botón aquí si lo deseas, ejemplo:
+                      <a href="#" class="btn btn-primary">Ver más <i class="fa fa-angle-right"></i></a>
+                      --}}
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            {{else}}
+            <div class="carousel-item">
+              <div class="row">
+                {{#each this}}
+                <div class="col-sm-3">
+                  <div class="thumb-wrapper">
+                    <a href="/libro/{{Id_Libro}}">
+                      <div class="img-box">
+                        <img src="{{Imagen}}" class="img-fluid" alt="{{Nombre}}">
+                      </div>
+                    </a>
+                    <div class="thumb-content">
+                      <h4>{{Nombre}}</h4>
+                      <p class="item-price"><span>${{Precio}}</span></p>
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            {{/if}}
+            {{/each}}
+          </div>
+          <a class="carousel-control-prev" href="#productCarousel" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+          </a>
+          <a class="carousel-control-next" href="#productCarousel" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+</div> {{!-- Cierre de .inicio-page --}}

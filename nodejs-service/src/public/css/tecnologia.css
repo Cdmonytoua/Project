@@ -1,0 +1,160 @@
+/* Estilos para la página de tecnologia */
+.tecnologia-page body {
+  color: #212529; /* THEME: Dark text color */
+  font-family: 'Inter', sans-serif; /* Consistent font */
+}
+
+.tecnologia-page .container {
+  margin-bottom: 5%;
+  margin-top: 2%;
+}
+
+.tecnologia-page hr {
+  width: 100px;
+  border: 2px solid #007bff; /* THEME: Primary color */
+  margin: 30px auto;
+}
+
+/* Grilla de Productos (tecnologia) */
+.tecnologia-page .product-grid {
+  padding: 15px;
+  border-radius: 0.35rem;
+  transition: box-shadow 0.3s ease;
+  background-color: #fff;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra sutil por defecto */
+}
+
+/* Contenedor de la Imagen */
+.tecnologia-page .image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.tecnologia-page .image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: contain; /* Asegura que toda la imagen sea visible */
+  border-radius: 0.25rem;
+}
+
+/* Contenedor para información del remate (título y precio) */
+.tecnologia-page .product-info {
+  padding: 15px 5px 10px 5px;
+  text-align: center;
+  flex-grow: 1; /* Permite que este contenedor crezca y empuje el botón hacia abajo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Estilos para el título y precio del remate */
+.tecnologia-page .product-info .tecnologia-title,
+.tecnologia-page .product-info .tecnologia-price {
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.tecnologia-page .product-info .tecnologia-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.tecnologia-page .product-info .tecnologia-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 0;
+}
+
+/* Formulario para agregar al carrito */
+.tecnologia-page .add-to-cart-form {
+  margin-top: auto; /* Empuja el formulario al final de la tarjeta */
+  padding-top: 10px;
+}
+
+.tecnologia-page .buy {
+  background-color: transparent;
+  color: #007bff;
+  border-radius: 0.25rem;
+  border: 1px solid #007bff;
+  width: 100%;
+  padding: 10px 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.tecnologia-page .buy:hover,
+.tecnologia-page .buy:focus {
+  background-color: #007bff;
+  color: #ffffff;
+  outline: none;
+}
+
+.tecnologia-page .text-center {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Estilos para la paginación (si la tienes) */
+.tecnologia-page .pagination {
+  justify-content: center;
+}
+
+.tecnologia-page .page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+.tecnologia-page .page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.tecnologia-page .page-link {
+  color: #007bff;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.tecnologia-page .page-link:hover {
+  color: #0056b3;
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.tecnologia-page .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}

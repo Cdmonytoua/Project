@@ -1,34 +1,34 @@
-
-* {
+/* card_menu.css */
+.card_menu-container * { /* Scope transition if it's specific to card_menu performance */
   transition: all 0.3s ease-out;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: auto;
-    grid-gap: 1rem;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 50px;
+.card_menu-container { /* Renamed container to avoid clash */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+  grid-auto-rows: auto;
+  grid-gap: 1.5rem; /* Slightly more gap */
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px; /* Balanced padding */
 }
 
-h3 {
-  color: #262626;
-  font-size: 17px;
-  line-height: 24px;
+.card_menu-container h3 { /* Scoped */
+  color: #212529; /* THEME: Dark text */
+  font-size: 18px; /* Adjusted size */
+  line-height: 1.4;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 8px; /* Increased margin */
 }
 
-p {
-  font-size: 17px;
+.card_menu-container p { /* Scoped */
+  font-size: 16px; /* THEME: Base font size */
   font-weight: 400;
-  line-height: 20px;
-  color: #666666;
-
+  line-height: 1.5;
+  color: #6c757d; /* THEME: Secondary text */
 }
-.go-corner {
+
+.card_menu-container .go-corner { /* Scoped */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,55 +38,56 @@ p {
   overflow: hidden;
   top: 0;
   right: 0;
-  background-color: #2196F3;
-  border-radius: 0 4px 0 32px;
+  background-color: #007bff; /* THEME: Primary color */
+  border-radius: 0 0.25rem 0 32px; /* THEME: Border radius on one corner */
 }
 
-.go-arrow {
+.card_menu-container .go-arrow { /* Scoped */
   margin-top: -4px;
   margin-right: -4px;
   color: white;
-  font-family: courier, sans;
+  font-family: 'Courier New', Courier, monospace; /* Keep for arrow character */
 }
 
-
-.card2 {
+/* card2 here is different from auth.css .card2 */
+.card_menu-container .card-item { /* Renamed .card2 to .card-item to avoid collision */
   display: block;
-  top: 0px;
   position: relative;
-  max-width: 262px;
-  background-color: #f2f8f9;
-  border-radius: 4px;
-  padding: 32px 24px;
-  margin: 12px;
+  /* max-width: 262px; Let grid handle width */
+  background-color: #ffffff; /* THEME: White background for cards */
+  border-radius: 0.25rem; /* THEME: Border radius */
+  padding: 24px; /* Adjusted padding */
+  margin: 0; /* Margin handled by grid gap */
   text-decoration: none;
   z-index: 0;
   overflow: hidden;
-  border: 1px solid #f2f8f9;
+  border: 1px solid #dee2e6; /* THEME: Border color */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Softer shadow */
 }
-  .card2:hover {
-    transition: all 0.2s ease-out;
-    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
-    top: -4px;
-    border: 1px solid #cccccc;
-    background-color: white;
-  }
 
-  .card2:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: -16px;
-    right: -16px;
-    background: #2196F3;
-    height: 32px;
-    width: 32px;
-    border-radius: 32px;
-    transform: scale(2);
-    transform-origin: 50% 50%;
-    transition: transform 0.15s ease-out;
-  }
+.card_menu-container .card-item:hover {
+  /* transition: all 0.2s ease-out; Handled by * if global */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+  top: -2px; /* Subtle lift */
+  border-color: #007bff; /* THEME: Primary border on hover */
+  background-color: white;
+}
 
-  .card2:hover:before {
-    transform: scale(2.15);
-  }
+.card_menu-container .card-item:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -16px;
+  right: -16px;
+  background: #007bff; /* THEME: Primary color */
+  height: 32px;
+  width: 32px;
+  border-radius: 32px;
+  transform: scale(1); /* Start smaller */
+  transform-origin: 50% 50%;
+  transition: transform 0.25s ease-out; /* Smoother transition */
+}
+
+.card_menu-container .card-item:hover:before {
+  transform: scale(2.5); /* Larger scale effect */
+}

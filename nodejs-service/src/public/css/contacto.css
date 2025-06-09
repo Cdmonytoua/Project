@@ -1,69 +1,89 @@
-
-.text{
-    width: 100%;
-    height: 100%;
-    font-family: sans-serif;
-    letter-spacing: 0.03em;
-    line-height: 1.6;
-    font-family: 'Open Sans', sans-serif;
-    margin-bottom: 50px;
+/* contacto.css */
+.contacto-page .text{ /* Scoped */
+  /* width: 100%; */ /* Handled by container */
+  /* height: 100%; */ /* Avoid fixed height */
+  font-family: 'Roboto', sans-serif; /* THEME: Font */
+  letter-spacing: normal; /* Use default or small value like 0.01em */
+  line-height: 1.6; /* Good line height */
+  margin-bottom: 50px;
 }
 
-.title{
-    text-align: center;
-    font-size: 40px;
-    color: #6a6a6a;
-    margin-top: 10px;
-    font-weight: 100;
-    font-family: 'Roboto', sans-serif;
+.contacto-page .title{ /* Scoped */
+  text-align: center;
+  font-size: 32px; /* Adjusted size */
+  color: #212529; /* THEME: Dark text */
+  margin-top: 30px; /* Adjusted margin */
+  margin-bottom: 30px; /* Added margin */
+  font-weight: 700; /* Bold title */
+  font-family: 'Roboto', sans-serif; /* THEME: Font */
 }
 
-
-.container{
-    width: 100%;
-    max-width: 1200px;
-    height: 430px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: auto;
+.contacto-page .container{ /* Scoped to avoid conflict with other .container */
+  width: 100%;
+  max-width: 1200px;
+  /* height: 430px; Remove fixed height */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  gap: 20px; /* Use gap for spacing */
 }
 
-.container .card{
-    width: 330px;
-    height: 430px;
-    border-radius: 8px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    margin: 20px;
-    text-align: center;
-    transition: all 0.25s;
+.contacto-page .container .card{ /* Scoped */
+  /* width: 330px; Let flexbox handle width with basis/grow/shrink or min-width */
+  flex: 1 1 300px; /* Flex grow, shrink, basis */
+  max-width: 330px;
+  min-height: 400px; /* Ensure cards have some min height */
+  border-radius: 0.25rem; /* THEME: Border radius */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  overflow: hidden;
+  /* margin: 20px; Handled by gap */
+  text-align: center;
+  transition: all 0.25s;
+  background-color: #fff; /* Ensure background for card */
+  display: flex; /* For vertical alignment of content */
+  flex-direction: column;
 }
 
-.container .card:hover{
-    transform: translateY(-15px);
-    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+.contacto-page .container .card:hover{
+  transform: translateY(-10px); /* Slightly less transform */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 
-.container .card img{
-    width: 330px;
-    height: 220px;
-    border-radius: 20%;
+.contacto-page .container .card img{
+  width: 100%; /* Full width of card */
+  height: 200px; /* Fixed height for image consistency */
+  object-fit: cover; /* Ensure image covers the area */
+  border-radius: 0; /* No radius if image is at the very top of card */
+  /* border-radius: 20%; This is a very large radius, maybe not intended for uniform look */
 }
 
-
-.container .card h4{
-    font-weight: 600;
+.contacto-page .container .card .card-content { /* Added a content wrapper */
+    padding: 1rem;
+    flex-grow: 1; /* Allow content to take available space */
 }
 
-.container .card p{
-    padding: 0 1rem;
-    font-size: 16px;
-    font-weight: 300;
+.contacto-page .container .card h4{
+  font-weight: 700; /* Bold heading */
+  font-size: 18px;
+  color: #212529; /* THEME: Dark text */
+  margin-bottom: 0.5rem;
 }
 
-.container .card a {
-    font-weight: 500;
-    text-decoration: none;
-    color: #3498db;
+.contacto-page .container .card p{
+  padding: 0; /* Padding handled by card-content */
+  font-size: 16px; /* THEME: Base font size */
+  font-weight: 400; /* Normal weight */
+  color: #6c757d; /* THEME: Secondary text */
+  margin-bottom: 1rem;
+}
+
+.contacto-page .container .card a {
+  font-weight: 600; /* Bold link */
+  text-decoration: none;
+  color: #007bff; /* THEME: Primary color */
+}
+.contacto-page .container .card a:hover {
+  color: #0056b3; /* Darker primary */
+  text-decoration: underline;
 }

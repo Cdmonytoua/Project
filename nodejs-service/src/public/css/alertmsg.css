@@ -1,28 +1,32 @@
+/* alertmsg.css */
 .alert {
-    padding: 20px;
-    background-color: #f44336;
-    color: white;
-    width: 30%;
-    margin: auto;
-    left: 0;
-    position: absolute; 
-    right: 0;
-    text-align: center; 
-    top: 1em;
-    z-index: 1;
-  }
-  
-.closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
+  padding: 15px 20px; /* Adjusted padding */
+  background-color: #dc3545; /* THEME: Danger color */
+  color: white;
+  width: auto; /* Allow width to be natural or set by container */
+  max-width: 500px; /* Max width for larger screens */
+  margin: 1em auto; /* Center it */
+  /* position: absolute; Remove absolute positioning unless strictly necessary for a specific layout */
+  /* left: 0; */
+  /* right: 0; */
+  text-align: center;
+  /* top: 1em; */
+  z-index: 1050; /* Ensure it's above other content */
+  border-radius: 0.25rem; /* THEME: Border radius */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Subtle shadow */
 }
-  
-.closebtn:hover {
-    color: black;
+
+.alert .closebtn { /* Scoped closebtn to alert */
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.alert .closebtn:hover {
+  color: #212529; /* Darker color on hover */
 }

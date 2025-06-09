@@ -1,36 +1,34 @@
-
-.indent-small {
+/* cuenta.css */
+/* This CSS seems to be for a user account/profile page form */
+.cuenta-page .indent-small { /* Scoped */
   margin-left: 5px;
 }
-.form-group.internal {
+.cuenta-page .form-group.internal { /* Scoped */
   margin-bottom: 0;
 }
-.dialog-panel {
+.cuenta-page .dialog-panel { /* Scoped */
   margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #dee2e6; /* THEME: Border color */
+  border-radius: 0.25rem; /* THEME: Border radius */
 }
-.datepicker-dropdown {
+.cuenta-page .datepicker-dropdown { /* Scoped */
   z-index: 200 !important;
 }
-.panel-body {
-  background: #e5e5e5;
-  /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, #e5e5e5 0%, #ffffff 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #e5e5e5), color-stop(100%, #ffffff));
-  /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(center, ellipse cover, #e5e5e5 0%, #ffffff 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover, #e5e5e5 0%, #ffffff 100%);
-  /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover, #e5e5e5 0%, #ffffff 100%);
-  /* IE10+ */
-  background: radial-gradient(ellipse at center, #e5e5e5 0%, #ffffff 100%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e5e5e5', endColorstr='#ffffff', GradientType=1);
-  /* IE6-9 fallback on horizontal gradient */
-  font: 600 15px "Open Sans", Arial, sans-serif;
+.cuenta-page .panel-body { /* Scoped */
+  /* background: #e5e5e5; Removed complex gradient for simpler theme */
+  background: #f8f9fa; /* THEME: Light background */
+  padding: 20px; /* Added padding */
+  border-radius: 0.25rem; /* THEME: Border radius */
+  border: 1px solid #dee2e6; /* THEME: Border color */
+  font-family: 'Roboto', sans-serif; /* THEME: Font */
+  font-weight: 400; /* Normal weight */
+  font-size: 16px; /* THEME: Base font size */
 }
-label.control-label {
-  font-weight: 600;
-  color: #777;
+.cuenta-page label.control-label { /* Scoped */
+  font-weight: 600; /* Bold labels */
+  color: #495057; /* Slightly darker grey for labels */
+  margin-bottom: .5rem; /* Space below label */
+  display: block; /* Make labels block for better spacing with inputs */
 }

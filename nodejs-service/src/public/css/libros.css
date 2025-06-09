@@ -1,66 +1,191 @@
-body{
-	color: #434444;
+.libros-page body {
+  color: #212529; /* THEME: Dark text color */
+  font-family: 'Inter', sans-serif; /* Consistent font */
 }
-.container{
-	margin-bottom: 5%;
-	margin-top: 2%;
+
+.libros-page .container {
+  margin-bottom: 5%;
+  margin-top: 2%;
 }
-hr{
-	width: 300px;
-	border: 3px solid #434444;
+
+.libros-page hr {
+  width: 100px;
+  border: 2px solid #007bff; /* THEME: Primary color */
+  margin: 30px auto;
 }
 
 /* Product Grid */
-.product-grid{
-	padding-bottom: 20px;
-	padding-top: 20px;
-}
-.product-grid:hover{
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.image{
-	position: relative;
-}
-.overlay{
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 100%;
-	width: 100%;
-	opacity: 0;
-	transition: .5s ease;
-	background-color: rgba(67, 68, 68, 0.7);
-}
-.image:hover .overlay{
-	opacity: 1;
-}
-.detail{
-	color: #fff;
-	font-size: 20px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
+.libros-page .product-grid {
+  padding: 15px;
+  /* border: 1px solid #dee2e6; */ /* MODIFICACIÓN: Borde eliminado */
+  border-radius: 0.35rem; /* THEME: Border radius - slightly increased for softer look */
+  transition: box-shadow 0.3s ease;
+  background-color: #fff;
+  margin-bottom: 20px;
+  display: flex; /* MODIFICACIÓN: Habilitar Flexbox */
+  flex-direction: column; /* MODIFICACIÓN: Dirección de columna para alinear elementos verticalmente */
+  height: 100%; /* Asegurar que todas las tarjetas intenten ocupar la misma altura si están en una fila de Bootstrap */
 }
 
-.buy{
-	background-color: transparent;
-	color: #434444;
-	border-radius: 0;
-	border: 1px solid #434444;
-	width: 100%;
-	margin-top: 20px;
-	
+.libros-page .product-grid:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
 }
-.buy:hover{
-	background-color: #434444;
-	color: #ffffff;
+
+.libros-page .image {
+  position: relative;
+  overflow: hidden; /* Aunque con object-fit: contain no debería haber overflow de la imagen misma */
+  border-radius: 0.25rem;
+  width: 100%; /* Ensure image container takes full width of its column part */
+  display: flex; /* Para ayudar a centrar la imagen si es necesario */
+  align-items: center; /* Centra verticalmente la imagen si es más corta que max-height */
+  justify-content: center; /* Centra horizontalmente la imagen */
+  min-height: 200px; /* Establece una altura mínima para el contenedor de la imagen para dar espacio visual */
 }
-.text-center{
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
+
+.libros-page .image img {
+  display: block;
+  width: 100%; /* La imagen intentará ocupar el ancho completo de su contenedor '.image' */
+  height: auto; /* La altura se ajusta automáticamente para mantener la proporción de la imagen */
+  max-height: 280px; /* MODIFICACIÓN: Altura máxima para la imagen (ej. para portadas de libros). Ajusta este valor como necesites. */
+  object-fit: contain; /* MODIFICACIÓN: Asegura que toda la imagen sea visible dentro de su caja, manteniendo la proporción. Puede añadir letterboxing. */
+  border-radius: 0.25rem; /* Mantiene las esquinas redondeadas de la imagen */
+  /* margin-left: auto; y margin-right: auto; no son necesarios aquí si .image usa flex para centrar */
+}
+
+.libros-page .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(0, 123, 255, 0.7); /* THEME: Primary color with alpha */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem; /* Match image border radius */
+}
+
+.libros-page .image:hover .overlay {
+  opacity: 1;
+}
+
+.libros-page .detail {
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Contenedor para información del producto (título y precio) */
+.libros-page .product-info {
+  padding: 15px 5px 10px 5px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Estilos para el título y precio del libro para controlar el desbordamiento */
+.libros-page .product-info .book-title,
+.libros-page .product-info .book-price {
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.libros-page .product-info .book-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.libros-page .product-info .book-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 0;
+}
+
+/* Formulario para agregar al carrito */
+.libros-page .add-to-cart-form {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.libros-page .buy {
+  background-color: transparent;
+  color: #007bff;
+  border-radius: 0.25rem;
+  border: 1px solid #007bff;
+  width: 100%;
+  padding: 10px 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.libros-page .buy:hover,
+.libros-page .buy:focus {
+  background-color: #007bff;
+  color: #ffffff;
+  outline: none;
+}
+
+.libros-page .text-center {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Estilos para la paginación para mejorar la accesibilidad y el aspecto */
+.libros-page .pagination {
+  justify-content: center;
+}
+
+.libros-page .page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+.libros-page .page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.libros-page .page-link {
+  color: #007bff;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.libros-page .page-link:hover {
+  color: #0056b3;
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.libros-page .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
 }

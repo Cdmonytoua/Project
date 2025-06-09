@@ -1,3 +1,4 @@
+/* carrito.css */
 * {
     margin: 0;
     padding: 0;
@@ -8,46 +9,75 @@
 
 
 
-ul {
+.carrito-body ul {
+    /* Scoped */
     list-style: none;
-    margin-bottom: 0px
+    margin-bottom: 0px;
+    padding-left: 0;
+    /* Remove default ul padding */
 }
 
-.button {
+.carrito-body .button {
+    /* Scoped and renamed to avoid conflict if "button" tag is styled globally */
     display: inline-block;
-    background: #0e8ce4;
-    border-radius: 5px;
-    height: 48px;
+    background: #007bff;
+    /* THEME: Primary color */
+    border-radius: 0.25rem;
+    /* THEME: Border radius */
+    height: auto;
+    /* Auto height */
+    padding: 10px 0;
+    /* Vertical padding for text inside link */
     -webkit-transition: all 200ms ease;
-    -moz-transition: all 200ms ease;
-    -ms-transition: all 200ms ease;
-    -o-transition: all 200ms ease;
-    transition: all 200ms ease
+    transition: all 200ms ease;
+    border: 1px solid #007bff;
+    /* THEME: Border */
 }
 
-.button a {
+.carrito-body .button a {
     display: block;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 48px;
+    font-size: 16px;
+    /* THEME: Base font size */
+    font-weight: 600;
+    /* Bold */
+    line-height: normal;
+    /* Remove fixed line height */
     color: #FFFFFF;
-    padding-left: 35px;
-    padding-right: 35px
+    /* THEME: Text light */
+    padding: 0 30px;
+    /* Horizontal padding */
+    text-decoration: none;
 }
 
-.button:hover {
-    opacity: 0.8
+.carrito-body .button:hover {
+    background: #0056b3;
+    /* Darker primary */
+    border-color: #0056b3;
+    opacity: 1;
 }
+
+.carrito-body .button a:hover {
+    text-decoration: none;
+}
+
 
 .cart_section {
     width: 100%;
     padding-top: 2%;
-    padding-bottom: 111px
+    padding-bottom: 60px;
+    /* Adjusted padding */
+   
+    /* THEME: Light background for section */
 }
 
 .cart_title {
-    font-size: 30px;
-    font-weight: 500
+    font-size: 28px;
+    /* Adjusted size */
+    font-weight: 700;
+    color: #212529;
+    /* THEME: Dark text */
+    margin-bottom: 20px;
+    /* Added margin */
 }
 
 .cart_items {
@@ -55,138 +85,219 @@ ul {
 }
 
 .cart_list {
-    border: solid 1px #e8e8e8;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
-    background-color: #fff
+    border: 1px solid #dee2e6;
+    /* THEME: Border color */
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05);
+    /* Softer shadow */
+    background-color: #fff;
+    border-radius: 0.25rem;
+    /* THEME: Border radius */
 }
 
 .cart_item {
     width: 100%;
-    padding: 15px;
-    padding-right: 46px
+    padding: 20px;
+    /* Increased padding */
+    padding-right: 46px;
+    /* Keep if specific layout needs it */
+    border-bottom: 1px solid #dee2e6;
+    /* Separator for items */
+}
+
+.cart_item:last-child {
+    border-bottom: none;
 }
 
 .cart_item_image {
-    width: 133px;
-    height: 133px;
-    float: left
+    width: 100px;
+    /* Adjusted size */
+    height: 100px;
+    /* Adjusted size */
+    float: left;
+    margin-right: 20px;
+    /* Space between image and info */
 }
 
 .cart_item_image img {
     max-width: 100%;
-    height: 140px;
+    height: 100%;
+    /* Fill the container */
+    object-fit: cover;
+    /* Ensure image covers well */
+    border-radius: 0.25rem;
+    /* THEME: Border radius for image */
 }
 
 .cart_item_info {
-    width: calc(100% - 133px);
+    width: calc(100% - 120px);
+    /* Adjusted width based on image and margin */
     float: left;
-    padding-top: 18px
+    padding-top: 0;
+    /* Removed fixed padding */
 }
 
 .cart_item_name {
-    margin-left: 7.53%
+    margin-left: 0;
+    /* Remove fixed margin, rely on flex/grid or natural flow */
 }
 
 .cart_item_title {
-    font-size: 14px;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.5)
+    font-size: 16px;
+    /* THEME: Base font size */
+    font-weight: 600;
+    /* Bold title */
+    color: #212529;
+    /* THEME: Dark text */
+    margin-bottom: 5px;
 }
 
 .cart_item_text {
-    font-size: 18px;
-    margin-top: 35px;
+    font-size: 14px;
+    /* Smaller for secondary text */
+    margin-top: 10px;
+    /* Adjusted margin */
+    color: #6c757d;
+    /* THEME: Secondary text */
 }
 
 .cart_item_text span {
+    /* Color swatch for product variant */
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    /* Smaller swatch */
+    height: 16px;
     border-radius: 50%;
-    margin-right: 11px;
-    -webkit-transform: translateY(4px);
-    -moz-transform: translateY(4px);
-    -ms-transform: translateY(4px);
-    -o-transform: translateY(4px);
-    transform: translateY(4px)
+    margin-right: 8px;
+    border: 1px solid #dee2e6;
+    /* Border for light colors */
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px);
 }
 
-.cart_item_price {
-    text-align: right
-}
-
+.cart_item_price,
 .cart_item_total {
-    text-align: right
+    /* Combined for similar styling */
+    text-align: right;
+    font-size: 18px;
+    font-weight: 600;
+    color: #212529;
+    /* THEME: Dark text */
 }
 
 .order_total {
     width: 100%;
-    height: 60px;
+    /* height: 60px; Remove fixed height */
+    padding: 15px 20px;
+    /* Adjusted padding */
     margin-top: 30px;
-    border: solid 1px #e8e8e8;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dee2e6;
+    /* THEME: Border color */
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05);
     padding-right: 46px;
+    /* Keep if specific layout needs it */
     padding-left: 15px;
-    background-color: #fff
+    background-color: #fff;
+    border-radius: 0.25rem;
+    /* THEME: Border radius */
 }
 
 .order_total_title {
     display: inline-block;
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.5);
-    line-height: 60px
+    font-size: 16px;
+    /* THEME: Base font size */
+    color: #6c757d;
+    /* THEME: Secondary text */
+    line-height: normal;
+    /* Remove fixed line height */
 }
 
 .order_total_amount {
     display: inline-block;
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 26px;
-    line-height: 60px
+    font-size: 20px;
+    /* Larger for total */
+    font-weight: 700;
+    /* Bold total */
+    margin-left: 15px;
+    /* Adjusted margin */
+    line-height: normal;
+    color: #007bff;
+    /* THEME: Primary color for emphasis */
 }
 
 .cart_buttons {
-    margin-top: 60px;
-    text-align: right
+    margin-top: 30px;
+    /* Adjusted margin */
+    text-align: right;
 }
 
-.cart_button_clear {
+.cart_button_clear,
+.cart_button_checkout {
+    /* Common styles */
     display: inline-block;
-    border: none;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 48px;
-    color: rgba(0, 0, 0, 0.5);
-    background: #FFFFFF;
-    border: solid 1px #b2b2b2;
-    padding-left: 35px;
-    padding-right: 35px;
+    border: 1px solid transparent;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    /* Remove fixed line height */
+    padding: 12px 25px;
+    /* Consistent padding */
     outline: none;
     cursor: pointer;
-    margin-right: 26px
+    border-radius: 0.25rem;
+    /* THEME: Border radius */
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.cart_button_clear a,
+.cart_button_checkout a {
+    text-decoration: none;
+}
+
+
+.cart_button_clear {
+    color: #007bff;
+    /* THEME: Primary color for text */
+    background: #FFFFFF;
+    border-color: #007bff;
+    /* THEME: Primary color for border */
+    margin-right: 15px;
+    /* Adjusted margin */
 }
 
 .cart_button_clear:hover {
-    border-color: #0e8ce4;
-    color: #0e8ce4
+    background-color: #e2f0ff;
+    /* Light primary background on hover */
+    color: #0056b3;
+    /* Darker primary text */
+    border-color: #0056b3;
 }
 
 .cart_button_checkout {
-    display: inline-block;
-    border: none;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 48px;
     color: #FFFFFF;
-    padding-left: 35px;
-    padding-right: 35px;
-    outline: none;
-    cursor: pointer;
-    vertical-align: top
+    /* THEME: Text light */
+    background-color: #28a745;
+    /* THEME: Success color for checkout */
+    border-color: #28a745;
+    vertical-align: top;
 }
+
+.cart_button_checkout:hover {
+    background-color: #1e7e34;
+    /* Darker success */
+    border-color: #1e7e34;
+}
+
 .success {
-	border: rgba(114, 219, 10, 0.29) 1px solid;
-	padding: 15px;
-	color: #7baf04;
-	margin: 15px 0
+    /* This seems like a general success message, similar to exito.css */
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    /* THEME: Success color with alpha */
+    padding: 15px 20px;
+    color: #155724;
+    /* Darker success text for readability */
+    background-color: #d4edda;
+    /* Light success background */
+    margin: 15px 0;
+    border-radius: 0.25rem;
+    /* THEME: Border radius */
 }

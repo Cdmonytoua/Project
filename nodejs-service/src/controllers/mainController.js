@@ -101,7 +101,7 @@ mainController.remates = (req, res) => {
         if (err) {
             throw err;
         } else {
-            res.render("remates", { style: "libros.css", remates: rows });
+            res.render("remates", { style: "remates.css", remates: rows });
         }
     });
 };
@@ -110,7 +110,7 @@ mainController.tecnologia = (req, res) => {
         if (err) {
             throw err;
         } else {
-            res.render("tecnologia", { style: "libros.css", tecnologia: rows });
+            res.render("tecnologia", { style: "tecnologia.css", tecnologia: rows });
         }
     });
 };

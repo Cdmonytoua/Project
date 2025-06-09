@@ -1,3 +1,4 @@
+/* auth.css */
 body {
     color: #000;
     overflow-x: hidden;
@@ -7,147 +8,177 @@ body {
 }
 
 .card0 {
-    box-shadow: 0px 4px 8px 0px #757575;
-    border-radius: 0px
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  border-radius: 0.25rem; /* THEME: Border radius */
+  border: 1px solid #dee2e6; /* THEME: Border color */
 }
 
 .card2 {
-    margin: 0px 40px
+  margin: 0px 40px;
+  /* Ensure card2 inside auth doesn't conflict with card2 from card_menu */
+}
+.auth-page .card2 { /* Be more specific if needed */
+    margin: 0px 40px;
 }
 
-.logo {
-    width: 64px;
-    height: 64px;
-    margin-top: 20px;
-    margin-left: 35px
+
+.logo { /* Assuming this is part of auth page */
+  width: 64px;
+  height: 64px;
+  margin-top: 20px;
+  margin-left: 35px;
+  margin-bottom: 20px; /* Added margin */
 }
 
-.image {
-    width: 360px;
-    height: 280px
+.image { /* Assuming this is part of auth page */
+  width: 100%; /* Responsive */
+  max-width: 360px;
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 20px; /* Added margin */
 }
 
 .border-line {
-    border-right: 1px solid #EEEEEE
+  border-right: 1px solid #dee2e6; /* THEME: Border color */
 }
 
 .facebook {
-    background-color: #3b5998;
-    color: #fff;
-    font-size: 18px;
-    padding-top: 5px;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer
+  background-color: #3b5998; /* Keep brand color */
+  color: #fff;
+  font-size: 18px;
+  padding-top: 5px; /* This might need adjustment based on icon */
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: inline-flex; /* For better alignment */
+  align-items: center;
+  justify-content: center;
 }
 
 .github {
-    background-color: black;
-    color: #fff;
-    font-size: 18px;
-    padding-top: 5px;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer
+  background-color: #24292e; /* Official GitHub black is closer to this */
+  color: #fff;
+  font-size: 18px;
+  padding-top: 5px; /* This might need adjustment based on icon */
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: inline-flex; /* For better alignment */
+  align-items: center;
+  justify-content: center;
 }
+
 .line {
-    height: 1px;
-    width: 45%;
-    background-color: #E0E0E0;
-    margin-top: 10px
+  height: 1px;
+  width: 45%;
+  background-color: #dee2e6; /* THEME: Border color */
+  margin-top: 10px;
 }
 
 .or {
-    width: 10%;
-    font-weight: bold
+  width: 10%;
+  font-weight: bold;
+  color: #6c757d; /* THEME: Secondary text color */
 }
 
 .text-sm {
-    font-size: 14px !important
+  font-size: 14px !important;
 }
 
 ::placeholder {
-    color: #BDBDBD;
-    opacity: 1;
-    font-weight: 300
+  color: #adb5bd; /* Lighter placeholder */
+  opacity: 1;
+  font-weight: 400; /* Normal weight */
 }
 
 :-ms-input-placeholder {
-    color: #BDBDBD;
-    font-weight: 300
+  color: #adb5bd;
+  font-weight: 400;
 }
 
 ::-ms-input-placeholder {
-    color: #BDBDBD;
-    font-weight: 300
+  color: #adb5bd;
+  font-weight: 400;
 }
 
 input,
 textarea {
-    padding: 10px 12px 10px 12px;
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-    margin-bottom: 5px;
-    margin-top: 2px;
-    width: 100%;
-    box-sizing: border-box;
-    color: #2C3E50;
-    font-size: 14px;
-    letter-spacing: 1px
+  padding: 10px 12px;
+  border: 1px solid #ced4da; /* THEME: Adjusted border color */
+  border-radius: 0.25rem; /* THEME: Border radius */
+  margin-bottom: 10px; /* Increased margin */
+  margin-top: 5px; /* Increased margin */
+  width: 100%;
+  box-sizing: border-box;
+  color: #495057; /* Slightly lighter input text */
+  font-size: 16px; /* THEME: Base font size */
+  letter-spacing: 0.5px; /* Reduced letter spacing */
+  font-family: 'Roboto', sans-serif; /* THEME: Font */
 }
 
 input:focus,
 textarea:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid #304FFE;
-    outline-width: 0
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-color: #007bff; /* THEME: Primary color on focus */
+  outline-width: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus ring */
 }
 
 button:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0;
 }
 
-a {
-    color: inherit;
-    cursor: pointer
+/* General button style for auth page */
+.auth-page .btn {
+    padding: 10px 20px;
+    border-radius: 0.25rem; /* THEME: Border radius */
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
-.btn-blue {
-    background-color: #fed300;
-    width: 150px;
-    color: #000000;
-    border-radius: 2px
+.btn-blue { /* Renaming to btn-primary or similar would be good practice */
+  background-color: #007bff; /* THEME: Primary color */
+  width: auto; /* Allow natural width or set via col- classes */
+  padding: 12px 25px;
+  color: #ffffff; /* THEME: Text light */
+  border-radius: 0.25rem; /* THEME: Border radius */
+  border: 1px solid #007bff; /* THEME: Primary color */
+}
+.btn-blue:hover {
+  background-color: #0056b3; /* Darker primary */
+  border-color: #0056b3;
 }
 
-
-.bg-blue {
-    color: #000000;
-    background-color: #fed300
+.bg-blue { /* This class name is confusing with btn-blue. Consider renaming to .bg-primary */
+  color: #ffffff; /* THEME: Text light */
+  background-color: #007bff !important; /* THEME: Primary color */
 }
+
 
 @media screen and (max-width: 991px) {
-    .logo {
-        margin-left: 0px;
-    }
+  .auth-page .logo { /* Specific to auth page if needed */
+    margin-left: 15px; /* Adjust as needed */
+    margin-right: 15px;
+  }
 
-    .image {
-        width: 300px;
-        height: 220px
-    }
+  .auth-page .image {
+    max-width: 300px; /* Adjust as needed */
+  }
 
-    .border-line {
-        border-right: none
-    }
+  .border-line {
+    border-right: none;
+  }
 
-    .card2 {
-        border-top: 1px solid #EEEEEE !important;
-        margin: 0px 15px
-    }
+  .auth-page .card2 { /* Specific to auth page */
+    border-top: 1px solid #dee2e6 !important; /* THEME: Border color */
+    margin: 0px 15px;
+  }
 }

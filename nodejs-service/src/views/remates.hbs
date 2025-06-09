@@ -1,23 +1,26 @@
-<div class="container">
-  <hr>
-  <div class="row">
-    <!-- Product  -->
-    {{#each remates}}
-    <div class="col-md-3 product-grid">
-      <div class="image">
-        <img src={{Imagen}} class="w-100 h-50">
-      </div>
-      <h5 class="text-center">{{Nombre_Remate}}</h5>
-      <h5 class="text-center">Precio: ${{Precio}}</h5>
-      <form action="/carrito/agregarremate" method="POST">
-        <input type="hidden" name="cantidad" value="1">
-        <input type="hidden" name="id" value={{Id_Remate}}>
-        <button type="submit" class="btn buy">
-          AGREGAR AL CARRITO
-        </button>
-      </form>
-    </div>
-    {{/each}}
-  </div>
+<div class="remates-page"> <!-- CAMBIO AQUÍ -->
+  <div class="container">
+    <hr>
+    <div class="row">
+      {{#each remates}}
+      <div class="col-md-3 product-grid">
+        <div class="image">
 
+          <img src="{{Imagen}}" class="w-100 img-fluid" alt="{{Nombre}}">
+          <!-- El div .overlay se puede eliminar del HTML ya que no se usa -->
+
+        </div>
+        <div class="product-info">
+          <h5 class="text-center remate-title">{{Nombre_Remate}}</h5> <!-- CAMBIO AQUÍ -->
+          <h5 class="text-center remate-price">Precio: ${{Precio}}</h5> <!-- CAMBIO AQUÍ -->
+        </div>
+        <form method="POST" action="/carrito/agregarremate" class="add-to-cart-form"> <input type="hidden"
+            name="cantidad" value="1">
+          <input type="hidden" name="id" value={{Id_Remate}}>
+          <button class="btn buy">AGREGAR AL CARRITO</button>
+        </form>
+      </div>
+      {{/each}}
+    </div>
+  </div>
 </div>

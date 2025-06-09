@@ -1,10 +1,9 @@
 <br>
-<div class="container">
-    {{#each categorias}}
-    <a class="card2" href="/categorias/{{Id_Categoria}}">
+<div class="card_menu-container"> {{#each categorias}}
+    <a class="card-item" href="/categorias/{{Id_Categoria}}">
         <h3>{{ Nombre }}</h3>
         <p class="small">Click aquí para ver todos los libros de esta categoría.</p>
-        <div class="go-corner" href="#">
+        <div class="go-corner">
             <div class="go-arrow"> → </div>
         </div>
     </a>
