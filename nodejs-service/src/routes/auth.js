@@ -22,8 +22,10 @@ router.post("/micuenta/actualizar", async (req, res) => {
     });
 });
 router.get("/salir", helper.isLogged, (req, res) => {
-    req.logOut();
-    res.redirect('/');
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
 });
 router.post("/registrar", passport.authenticate('local.registrar', {
     successRedirect: '/',

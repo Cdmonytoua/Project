@@ -1,6 +1,5 @@
 var mainModel = require('../models/mainModel');
 var adminModel = require('../models/adminModel');
-var helper = require('../lib/helpers');
 const helpers = require('../lib/helpers');
 var mainController = function () { }
 mainController.inicio = (req, res) => {

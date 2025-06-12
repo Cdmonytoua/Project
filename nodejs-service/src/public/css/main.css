@@ -1,11 +1,19 @@
+/* --- START OF FILE main.css (CORREGIDO) --- */
+
 /* main.css */
-/* Make the image fully responsive */
-.carousel-inner img {
+.banner-carousel-img {
   width: 100%;
-  height: auto;
-  /* Permite que la altura se ajuste automáticamente para mantener la proporción */
-  max-height: 450px;
-  /* Opcional: Un límite para que las imágenes del banner no sean demasiado altas en pantallas grandes */
+  height: 450px;
+  object-fit: contain;
+}
+html {
+    height: 100%; /* Asegura que el html ocupe toda la altura */
+}
+
+@media (max-width: 767px) {
+  .banner-carousel-img {
+    height: 250px;
+  }
 }
 
 .imgx {
@@ -14,50 +22,73 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+    min-height: 100%; /* El body debe tener al menos la altura de la ventana */
+    display: flex; /* Lo convertimos en contenedor flex */
+    flex-direction: column; /* Apilamos los hijos verticalmente (nav, main, footer) */
+    font-family: "Open Sans", sans-serif;
+}
+.flex-grow-1 {
+    flex-grow: 1;
 }
 
-#social {
-  background: rgb(0, 91, 143);
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-  overflow-x: hidden;
+.footercustom .social-icons-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px; 
 }
 
-a.linkss:link {
+a.linkss:link,
+a.linkss:visited,
+a.linkss:active {
   color: #fff;
   text-decoration: none;
-}
-
-a.linkss:visited {
-  color: #fff;
-  text-decoration: none;
+  transition: color 0.2s ease-in-out;
 }
 
 a.linkss:hover {
-  color: red;
-  text-decoration: none;
-}
-
-a.linkss:active {
-  color: #fff;
+  color: #ffc107;
   text-decoration: none;
 }
 
 .footercustom {
   background: #012D66;
-  text-align: center;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-  padding-top: 0px !important;
-  overflow-x: hidden;
+  color: white;
+  padding: 40px 0;
+  transition: padding 0.3s ease-in-out; /* Añadido para una transición suave */
 }
 
-.sinvineta {
+.footercustom .sinvineta {
   list-style: none;
-  color: white;
+  padding-left: 0;
 }
 
 #datos {
   color: white;
+  margin-bottom: 20px;
+}
+
+/* ===== NUEVA CLASE PARA EL TEXTO DE COPYRIGHT ===== */
+.copyright-notice {
+    color: #91BEC2; 
+    padding-top: 25px;
+}
+
+/* Regla para ocultar alertas vacías */
+.alert:empty {
+    display: none;
+}
+
+/* ===== MEDIA QUERY PARA REDUCIR ALTURA EN DESKTOP ===== */
+@media (min-width: 768px) {
+  .footercustom {
+    /* Reduce el padding vertical en pantallas grandes */
+    padding: 4px 0;
+  }
+  
+  .footercustom .social-icons-wrapper {
+    /* Reduce el margen inferior de los iconos */
+    margin-bottom: 4px;
+  }
 }

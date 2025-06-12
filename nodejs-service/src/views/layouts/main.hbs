@@ -1,183 +1,160 @@
+<!-- --- START OF FILE main.html (CORREGIDO) --- -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Librería L</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
+  <title>Librería L</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="/css/main.css">
-    {{#if style}}
-    <link rel="stylesheet" href="/css/{{style}}">
-    {{/if}}
+  <link rel="stylesheet" href="/css/main.css">
+  {{#if style}}
+  <link rel="stylesheet" href="/css/{{style}}">
+  {{/if}}
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- Image and text -->
+  <!-- ===== ESTRUCTURA CORREGIDA DE LA NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="/">
-                <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQGMmI_Rdtr2vQ/company-logo_200_200/0?e=2159024400&v=beta&t=Pb3pWJMei6siArpfya0Ote_7kggwtxm92DAfjw-Y2u0"
-                    width="30" height="30" class="d-inline-block align-top" alt="">
-                Librería L
-            </a>
-        </nav>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- El <nav> anidado ha sido eliminado. El <a> ahora es hijo directo. -->
+    <a class="navbar-brand" href="/">
+      <img
+        src="https://media-exp1.licdn.com/dms/image/C4E0BAQGMmI_Rdtr2vQ/company-logo_200_200/0?e=2159024400&v=beta&t=Pb3pWJMei6siArpfya0Ote_7kggwtxm92DAfjw-Y2u0"
+        width="30" height="30" class="d-inline-block align-top" alt="">
+      Librería L
+    </a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                {{#if user}}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                        aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item waves-effect waves-light" href="/micuenta">Mi cuenta</a>
-                        <a class="dropdown-item waves-effect waves-light" href="/salir">Cerrar sesión</a>
-                    </div>
-                </li>
-                {{else}}
-                <li class="nav-item dropdown">
-                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                        aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item waves-effect waves-light" href="/login">Inicia sesión</a>
-                        <a class="dropdown-item waves-effect waves-light" href="/registrar">Regístrate</a>
-                    </div>
-                    <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user"></i>
-                    </a>
-                </li>
-                {{/if}}
-                <li class="nav-item">
-                    <a class="nav-link" href="/carrito"><i class="fas fa-shopping-cart"></i></a>
-                </li>
-                {{#ifEquals user.Rol "admin" }}
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin"><i class="fas fa-user-cog"></i></a>
-                </li>
-                {{/ifEquals}}
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/libros">Libros</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categorias">Categorias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/autores">Autores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/editoriales">Editoriales</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/remates">Remates</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/tecnologia">Tecnologia</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" action="/buscar" method="POST">
-                <input onkeyup="success()" class="form-control mr-sm-2" id="search" type="text" name="search"
-                    placeholder="Buscar..." aria-label="Search">
-                <button id="btnSearch" class="btn btn-outline-success my-2 my-sm-0" type="submit"
-                    disabled>Buscar</button>
-            </form>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        </div>
-    </nav>
-    {{>error}}
-    {{{ body }}}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        {{#if user}}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item waves-effect waves-light" href="/micuenta">Mi cuenta</a>
+            <a class="dropdown-item waves-effect waves-light" href="/salir">Cerrar sesión</a>
+          </div>
+        </li>
+        {{else}}
+        <li class="nav-item dropdown">
+          <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item waves-effect waves-light" href="/login">Inicia sesión</a>
+            <a class="dropdown-item waves-effect waves-light" href="/registrar">Regístrate</a>
+          </div>
+          <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+        </li>
+        {{/if}}
+        <li class="nav-item">
+          <a class="nav-link" href="/carrito"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+        {{#ifEquals user.Rol "admin" }}
+        <li class="nav-item">
+          <a class="nav-link" href="/admin"><i class="fas fa-user-cog"></i></a>
+        </li>
+        {{/ifEquals}}
+        <li class="nav-item">
+          <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/libros">Libros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categorias">Categorias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/autores">Autores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/editoriales">Editoriales</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/remates">Remates</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tecnologia">Tecnologia</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" action="/buscar" method="POST">
+        <input onkeyup="success()" class="form-control mr-sm-2" id="search" type="text" name="search" placeholder="..."
+          aria-label="Search">
+        <button id="btnSearch" class="btn btn-outline-success my-2 my-sm-0" type="submit" disabled>Buscar</button>
+      </form>
 
-    <!-- Footer -->
-    <div id="social">
-        <div class="container" style="padding: 80px 0;" align="center">
-            <a class="linkss" href="https://es-la.facebook.com/">
-                <i class="fab fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
-            </a>
-            <a class="linkss" href="https://twitter.com/?lang=es">
-                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
-            </a>
-            <a class="linkss" href="https://www.instagram.com/">
-                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
-            </a>
-            <a class="linkss" href="https://myaccount.google.com/">
-                <i class="fab fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
-            </a>
-            <a class="linkss" href="https://www.linkedin.com/login/es">
-                <i class="fab fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
-            </a>
-        </div>
     </div>
-    <footer class="footercustom">
-        <h3 id="datos">Datos de contacto</h3>
-        <div class="row">
-            <div class="col-md-6">
-                <ul class="sinvineta">
-                    <li><a class="linkss" href="Contectenos.html"> Contactos</a></li>
-                    <li><a class="linkss" href="Politicas.html"> Politicas de privacidad</a></li>
-                    <li><a class="linkss" href="Sucursales.html"> Sucursales</a></li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <ul class="sinvineta">
-                    <li>Telefonos: 2351081549 - 2281657654</li>
-                    <li>Email: LibreriaL@gmail.com</li>
-                    <li>Horario de atencion: 9am - 8pm</li>
-                </ul>
-            </div>
+  </nav>
+  {{>error}}
+  <main class="flex-grow-1">
+    {{{ body }}}
+  </main>
+
+
+
+  <!-- Footer -->
+  <footer class="footercustom">
+    <div class="container">
+      <h3 id="datos" class="text-center">Datos de contacto</h3>
+
+      <div class="social-icons-wrapper">
+        <a class="linkss" href="https://es-la.facebook.com/"><i class="fab fa-facebook fa-2x"></i></a>
+        <a class="linkss" href="https://twitter.com/?lang=es"><i class="fab fa-twitter fa-2x"></i></a>
+        <a class="linkss" href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a>
+        <a class="linkss" href="https://myaccount.google.com/"><i class="fab fa-google-plus fa-2x"></i></a>
+        <a class="linkss" href="https://www.linkedin.com/login/es"><i class="fab fa-linkedin fa-2x"></i></a>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <ul class="sinvineta text-center text-md-left">
+            <li><a class="linkss" href="Contectenos.html">Contactos</a></li>
+            <li><a class="linkss" href="Politicas.html">Políticas de privacidad</a></li>
+            <li><a class="linkss" href="Sucursales.html">Sucursales</a></li>
+          </ul>
         </div>
-        <p style="color: #91BEC2; padding: 15px;">
-            &copy; 2020 Copyright: Libreria "L"
-        </p>
-    </footer>
+        <div class="col-md-6">
+          <ul class="sinvineta text-center text-md-right">
+            <li>Teléfonos: 2351081549 - 2281657654</li>
+            <li>Email: LibreriaL@gmail.com</li>
+            <li>Horario de atención: 9am - 8pm</li>
+          </ul>
+        </div>
+      </div>
+      <!-- ===== ESTILO EN LÍNEA ELIMINADO Y REEMPLAZADO POR UNA CLASE ===== -->
+      <p class="copyright-notice text-center">
+        © 2020 Copyright: Libreria "L"
+      </p>
+    </div>
+  </footer>
 </body>
 <script type="text/javascript" src="//js.stripe.com/v2/"></script>
 <script type="text/javascript" src="/js/pago.js"></script>
 <script>
-    function success() {
-        if (document.getElementById('search').value === "") {
-            document.getElementById('btnSearch').disabled = true;
-        } else {
-            document.getElementById('btnSearch').disabled = false;
-        }
+  function success() {
+    if (document.getElementById('search').value === "") {
+      document.getElementById('btnSearch').disabled = true;
+    } else {
+      document.getElementById('btnSearch').disabled = false;
     }
-
-    $(document).ready(function () {
-
-        $('#itemslider').carousel({ interval: 3000 });
-        $('.carousel-showmanymoveone .item').each(function () {
-            var itemToClone = $(this);
-
-            for (var i = 1; i < 6; i++) {
-                itemToClone = itemToClone.next();
-
-                if (!itemToClone.length) {
-                    itemToClone = $(this).siblings(':first');
-                }
-
-                itemToClone.children(':first-child').clone()
-                    .addClass("cloneditem-" + (i))
-                    .appendTo($(this));
-            }
-        });
-    });
+  }
 </script>
 
 </html>

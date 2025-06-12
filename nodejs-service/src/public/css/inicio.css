@@ -1,110 +1,103 @@
+/* --- START OF FILE inicio.css (VERSIÓN FINAL Y CORRECTA) --- */
+
 .inicio-page h2 {
-	/* Scoped */
 	color: #212529;
-	/* THEME: Dark text */
 	font-size: 28px;
-	/* Adjusted size */
 	font-weight: 300;
-	/* Lighter weight for this specific design if intended */
 	text-align: center;
 	text-transform: uppercase;
 	position: relative;
 	margin: 30px 0 60px;
-	/* Adjusted bottom margin for ::after */
 }
 
+/* --- REGLAS PARA LAS TARJETAS DEL CARRUSEL DE PRODUCTOS --- */
 .inicio-page #productCarousel .carousel-item .row {
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-.inicio-page #productCarousel .col-sm-3 {
-    display: flex;
-    flex-direction: column;
+.inicio-page #productCarousel .col-sm-3,
+.inicio-page #productCarousel .col-6 {
+	display: flex;
+	flex-direction: column;
 }
 
-/* 2. Modificar .thumb-wrapper para que sea un contenedor flex. */
-/*    Esto hará que ocupe toda la altura disponible y distribuya su contenido. */
 .inicio-page .carousel .thumb-wrapper {
-    /* Propiedades existentes... */
-    text-align: center;
-    padding: 15px;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-    margin: 0 5px;
-
-    /* --- NUEVAS PROPIEDADES --- */
-    display: flex;              /* Activa Flexbox */
-    flex-direction: column;     /* Apila los elementos verticalmente (imagen arriba, contenido abajo) */
-    justify-content: space-between; /* Distribuye el espacio: empuja la imagen hacia arriba y el contenido hacia abajo */
-    width: 100%;                /* Asegura que la tarjeta ocupe toda la columna */
-    height: 100%;               /* ¡La clave! Hace que la tarjeta ocupe toda la altura de la columna (que ahora es igual para todas) */
+	text-align: center;
+	padding: 15px;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	border-radius: 0.25rem;
+	margin: 0 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
 }
 
-/* 3. Asegurar que el contenido del texto no se encoja y se alinee correctamente. */
 .inicio-page .carousel .thumb-content {
-    padding: 15px 0 0 0; /* Ajusta el padding para que no se duplique con el de .thumb-wrapper */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1; /* Permite que esta sección crezca para ocupar el espacio sobrante */
+	padding: 15px 0 0 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-grow: 1;
 }
 
-/* 4. (Opcional pero recomendado) Dar una altura mínima al título para reservar espacio */
-/*    para dos líneas, evitando saltos si un título es más largo. */
 .inicio-page .carousel .carousel-item h4 {
-    min-height: 44px; /* Ajusta este valor según el tamaño de tu fuente y line-height */
-    margin-bottom: 10px;
+	min-height: 44px;
+	margin-bottom: 10px;
 }
 
-
+/* --- REGLAS PARA EL TÍTULO H2 --- */
 .inicio-page h2 b {
 	color: #ffc107;
-	/* THEME: Warning/Highlight color */
 	font-weight: 700;
-	/* Make bold part actually bold */
 }
 
 .inicio-page h2::after {
 	content: "";
 	width: 80px;
-	/* Slightly smaller */
 	position: absolute;
 	margin: 0 auto;
 	height: 3px;
-	/* Thinner line */
 	background: #007bff;
-	/* THEME: Primary color for underline */
 	left: 0;
 	right: 0;
 	bottom: -15px;
-	/* Adjusted position */
 }
 
-.inicio-page .carousel {
-	/* Scoped */
+/* --- REGLAS DE ESPACIADO Y FUNCIONAMIENTO DE CARRUSELES --- */
+/* 1. Espaciado SÓLO para el carrusel de productos (el de abajo) */
+.inicio-page #productCarousel {
 	margin: 50px auto;
 	padding: 0 40px;
-	/* Adjusted padding */
+	position: relative;
 }
 
+/* 2. Propiedades generales para que AMBOS carruseles se muestren */
 .inicio-page .carousel .carousel-item {
-	min-height: 330px;
 	text-align: center;
 	overflow: hidden;
 }
 
-.inicio-page .carousel .carousel-item .img-box {
+/* 3. Altura mínima SÓLO para las tarjetas del carrusel de productos */
+.inicio-page #productCarousel .carousel-item {
+	min-height: 330px;
+}
+
+/* --- REGLAS PARA LAS IMÁGENES DENTRO DE LOS CARRUSELES --- */
+/* Contenedor de imagen SÓLO en el carrusel de productos */
+.inicio-page #productCarousel .carousel-item .img-box {
 	height: 250px;
-	/* Adjusted height */
 	width: 100%;
 	position: relative;
 	margin-bottom: 15px;
-	/* Space below image */
 }
 
-.inicio-page .carousel .carousel-item img {
+/* ===== ESTA ES LA CORRECCIÓN MÁS IMPORTANTE ===== */
+/* El position: absolute se aplica SÓLO a las imágenes dentro de .img-box (carrusel de productos) */
+.inicio-page #productCarousel .carousel-item .img-box img {
 	max-width: 100%;
 	max-height: 100%;
 	display: inline-block;
@@ -114,27 +107,19 @@
 	left: 0;
 	right: 0;
 	object-fit: contain;
-	/* Use contain to see full image */
 }
 
-
-
+/* --- RESTO DE ESTILOS (SIN CAMBIOS) --- */
 .inicio-page .carousel .carousel-item .btn {
 	color: #007bff;
-	/* THEME: Primary color */
 	border-radius: 0.25rem;
-	/* THEME: Border radius */
 	font-size: 14px;
-	/* Adjusted size */
 	text-transform: uppercase;
 	font-weight: bold;
 	background: none;
 	border: 1px solid #007bff;
-	/* THEME: Primary border */
 	padding: 8px 15px;
-	/* Adjusted padding */
 	margin-top: 10px;
-	/* Increased margin */
 	line-height: 1.5;
 	transition: all 0.2s ease;
 }
@@ -142,9 +127,7 @@
 .inicio-page .carousel .carousel-item .btn:hover,
 .inicio-page .carousel .carousel-item .btn:focus {
 	color: #fff;
-	/* THEME: Light text on hover */
 	background: #007bff;
-	/* THEME: Primary background on hover */
 	border-color: #007bff;
 	box-shadow: none;
 }
@@ -155,37 +138,23 @@
 	margin-left: 5px;
 }
 
-
-
-.inicio-page .carousel-control-prev {
+.inicio-page .carousel-control-prev,
+.inicio-page .carousel-control-next {
 	height: 50px;
-	/* Smaller controls */
 	width: 50px;
 	background: rgba(0, 123, 255, 0.5);
-	/* THEME: Primary color with alpha */
 	margin: auto 0;
 	border-radius: 50%;
-	/* Circular controls */
 	opacity: 0.8;
 	transition: opacity 0.2s ease;
-	left: -30px;
-
 }
 
-.inicio-page .carousel-control-next {
-	/* Scoped */
-	height: 50px;
-	/* Smaller controls */
-	width: 50px;
-	background: rgba(0, 123, 255, 0.5);
-	/* THEME: Primary color with alpha */
-	margin: auto 0;
-	border-radius: 50%;
-	/* Circular controls */
-	opacity: 0.8;
-	transition: opacity 0.2s ease;
-	right: -30px;
+#productCarousel .carousel-control-prev {
+	left: -30px;
+}
 
+#productCarousel .carousel-control-next {
+	right: -30px;
 }
 
 .inicio-page .carousel-control-prev:hover,
@@ -193,53 +162,42 @@
 	opacity: 1;
 }
 
-.inicio-page .carousel-control-prev i,
-.inicio-page .carousel-control-next i {
+.inicio-page #productCarousel .carousel-control-prev i,
+.inicio-page #productCarousel .carousel-control-next i {
 	font-size: 24px;
-	/* Adjusted icon size */
 	position: absolute;
 	top: 50%;
 	display: inline-block;
 	margin: -12px 0 0 0;
-	/* Center icon */
 	z-index: 5;
 	left: 0;
 	right: 0;
 	color: #fff;
-	/* THEME: Light text for icons */
 	text-shadow: none;
 	font-weight: bold;
 }
 
 .inicio-page .carousel .item-price {
-	/* Scoped */
 	font-size: 16px;
-	/* Adjusted size */
 	padding: 2px 0;
 	color: #212529;
-	/* THEME: Dark text */
 	font-weight: 600;
 }
 
 .inicio-page .carousel .item-price strike {
 	color: #6c757d;
-	/* THEME: Secondary text for strike */
 	margin-right: 5px;
 	font-weight: 400;
 }
 
 .inicio-page .carousel .item-price span {
-	/* Current price */
 	color: #28a745;
-	/* THEME: Success color for price highlight */
 	font-size: 110%;
 	font-weight: 700;
 }
 
 .inicio-page .carousel .carousel-indicators {
-	/* Scoped */
 	bottom: -40px;
-	/* Adjusted position */
 }
 
 .inicio-page .carousel-indicators li,
@@ -253,10 +211,39 @@
 
 .inicio-page .carousel-indicators li {
 	background: #adb5bd;
-	/* Lighter grey for inactive indicators */
 }
 
 .inicio-page .carousel-indicators li.active {
 	background: #007bff;
-	/* THEME: Primary color for active indicator */
+}
+
+@media (max-width: 767px) {
+	.inicio-page #productCarousel {
+		padding: 0 10px;
+	}
+
+	#productCarousel .carousel-control-prev {
+		left: -5px;
+	}
+
+	#productCarousel .carousel-control-next {
+		right: -5px;
+	}
+
+	#productCarousel .carousel-control-prev,
+	#productCarousel .carousel-control-next {
+		height: 40px;
+		width: 40px;
+	}
+
+	#productCarousel .carousel-control-prev i,
+	#productCarousel .carousel-control-next i {
+		font-size: 20px;
+		margin-top: -10px;
+	}
+
+	.inicio-page h2 {
+		font-size: 24px;
+		margin-bottom: 50px;
+	}
 }

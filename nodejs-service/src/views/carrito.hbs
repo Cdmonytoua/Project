@@ -1,129 +1,130 @@
 {{#if carrito}}
 <div class="cart_section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="cart_container">
-                    <div class="cart_title">Carrito de compra</div>
-                    {{#checklength libros 0}}
-                    <div class="cart_items">
-                        <ul class="cart_list">
-                            {{#each libros}}
-                            <li class="cart_item clearfix">
-                                <div class="cart_item_image"><img src={{Imagen}} alt=""></div>
-                                <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                    <div class="cart_item_name cart_info_col">
-                                        <div class="cart_item_title">Categoría</div>
-                                        <div class="cart_item_text">Libro</div>
-                                    </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="cart_container">
+          <div class="cart_title">Carrito de compra</div>
+          {{#checklength libros 0}}
+          <div class="cart_items">
+            <ul class="cart_list">
+              {{#each libros}}
+              <li class="cart_item"> <!-- 'clearfix' eliminado -->
+                <div class="cart_item_image"><img src={{Imagen}} alt=""></div>
+                <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                  <div class="cart_item_name cart_info_col">
+                    <div class="cart_item_title">Categoría</div>
+                    <div class="cart_item_text">Libro</div>
+                  </div>
 
-                                    <div class="cart_item_quantity cart_info_col">
-                                        <div class="cart_item_title">Cantidad</div>
-                                        <div class="cart_item_text">{{#count ../carritoLibros Id_Libro }} {{/count}}
-                                        </div>
-                                    </div>
-                                    <div class="cart_item_price cart_info_col">
-                                        <div class="cart_item_title">Precio</div>
-                                        <div class="cart_item_text">${{Precio}} MX</div>
-                                    </div>
-                                    <div class="cart_item_total cart_info_col">
-                                        <div class="cart_item_title">Total</div>
-                                        <div class="cart_item_text">${{#subtotal ../carritoLibros Id_Libro Precio}}
-                                            {{/subtotal}} MX</div>
-                                    </div>
-                                </div>
-                            </li>
-                            {{/each}}
-                        </ul>
+                  <div class="cart_item_quantity cart_info_col">
+                    <div class="cart_item_title">Cantidad</div>
+                    <div class="cart_item_text">{{#count ../carritoLibros Id_Libro }} {{/count}}
                     </div>
-                    {{/checklength}}
-                    {{#checklength remates 0}}
-                    <div class="cart_items">
-                        <ul class="cart_list">
-                            {{#each remates}}
-                            <li class="cart_item clearfix">
-                                <div class="cart_item_image"><img src={{Imagen}} alt=""></div>
-                                <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                    <div class="cart_item_name cart_info_col">
-                                        <div class="cart_item_title">Categoría</div>
-                                        <div class="cart_item_text">Remates</div>
-                                    </div>
-
-                                    <div class="cart_item_quantity cart_info_col">
-                                        <div class="cart_item_title">Cantidad</div>
-                                        <div class="cart_item_text">{{#count ../carritoRemates Id_Remate }}
-                                            {{/count}}
-                                        </div>
-                                    </div>
-                                    <div class="cart_item_price cart_info_col">
-                                        <div class="cart_item_title">Precio</div>
-                                        <div class="cart_item_text">${{Precio}} MX</div>
-                                    </div>
-                                    <div class="cart_item_total cart_info_col">
-                                        <div class="cart_item_title">Total</div>
-                                        <div class="cart_item_text">${{#subtotal ../carritoRemates Id_Remate
-                                            Precio}}
-                                            {{/subtotal}} MX</div>
-                                    </div>
-                                </div>
-                            </li>
-                            {{/each}}
-                        </ul>
-                    </div>
-                    {{/checklength}}
-                    {{#checklength tecnologia 0}}
-                    <div class="cart_items">
-                        <ul class="cart_list">
-                            {{#each tecnologia}}
-                            <li class="cart_item clearfix">
-                                <div class="cart_item_image"><img src={{Imagen}} alt=""></div>
-                                <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                    <div class="cart_item_name cart_info_col">
-                                        <div class="cart_item_title">Categoría</div>
-                                        <div class="cart_item_text">Tecnología</div>
-                                    </div>
-
-                                    <div class="cart_item_quantity cart_info_col">
-                                        <div class="cart_item_title">Cantidad</div>
-                                        <div class="cart_item_text">{{#count ../carritoTecnologia Id_Tecnologia }}
-                                            {{/count}}
-                                        </div>
-                                    </div>
-                                    <div class="cart_item_price cart_info_col">
-                                        <div class="cart_item_title">Precio</div>
-                                        <div class="cart_item_text">${{Precio}} MX</div>
-                                    </div>
-                                    <div class="cart_item_total cart_info_col">
-                                        <div class="cart_item_title">Total</div>
-                                        <div class="cart_item_text">${{#subtotal ../carritoTecnologia Id_Tecnologia
-                                            Precio}}
-                                            {{/subtotal}} MX</div>
-                                    </div>
-                                </div>
-                            </li>
-                            {{/each}}
-                        </ul>
-                    </div>
-                    {{/checklength}}
-                    <div class="order_total">
-                        <div class="order_total_content text-md-right">
-                            <div class="order_total_title">Total:</div>
-                            <div class="order_total_amount">${{total}} MX</div>
-                        </div>
-                    </div>
-                    <div class="cart_buttons">
-                        <button type="button" onclick="location.href='/carrito/limpiar';"
-                            class="button cart_button_clear">Vaciar carrito</button>
-                        <button type="button" onclick="location.href='/carrito/comprar';"
-                            class="button cart_button_checkout">Comprar</button>
-                    </div>
+                  </div>
+                  <div class="cart_item_price cart_info_col">
+                    <div class="cart_item_title">Precio</div>
+                    <div class="cart_item_text">${{Precio}} MX</div>
+                  </div>
+                  <div class="cart_item_total cart_info_col">
+                    <div class="cart_item_title">Total</div>
+                    <div class="cart_item_text">${{#subtotal ../carritoLibros Id_Libro Precio}}
+                      {{/subtotal}} MX</div>
+                  </div>
                 </div>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/checklength}}
+          {{#checklength remates 0}}
+          <div class="cart_items">
+            <ul class="cart_list">
+              {{#each remates}}
+              <li class="cart_item"> <!-- 'clearfix' eliminado -->
+                <div class="cart_item_image"><img src={{Imagen}} alt=""></div>
+                <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                  <div class="cart_item_name cart_info_col">
+                    <div class="cart_item_title">Categoría</div>
+                    <div class="cart_item_text">Remates</div>
+                  </div>
+
+                  <div class="cart_item_quantity cart_info_col">
+                    <div class="cart_item_title">Cantidad</div>
+                    <div class="cart_item_text">{{#count ../carritoRemates Id_Remate }}
+                      {{/count}}
+                    </div>
+                  </div>
+                  <div class="cart_item_price cart_info_col">
+                    <div class="cart_item_title">Precio</div>
+                    <div class="cart_item_text">${{Precio}} MX</div>
+                  </div>
+                  <div class="cart_item_total cart_info_col">
+                    <div class="cart_item_title">Total</div>
+                    <div class="cart_item_text">${{#subtotal ../carritoRemates Id_Remate
+                      Precio}}
+                      {{/subtotal}} MX</div>
+                  </div>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/checklength}}
+          {{#checklength tecnologia 0}}
+          <div class="cart_items">
+            <ul class="cart_list">
+              {{#each tecnologia}}
+              <li class="cart_item"> <!-- 'clearfix' eliminado -->
+                <div class="cart_item_image"><img src={{Imagen}} alt=""></div>
+                <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                  <div class="cart_item_name cart_info_col">
+                    <div class="cart_item_title">Categoría</div>
+                    <div class="cart_item_text">Tecnología</div>
+                  </div>
+
+                  <div class="cart_item_quantity cart_info_col">
+                    <div class="cart_item_title">Cantidad</div>
+                    <div class="cart_item_text">{{#count ../carritoTecnologia Id_Tecnologia }}
+                      {{/count}}
+                    </div>
+                  </div>
+                  <div class="cart_item_price cart_info_col">
+                    <div class="cart_item_title">Precio</div>
+                    <div class="cart_item_text">${{Precio}} MX</div>
+                  </div>
+                  <div class="cart_item_total cart_info_col">
+                    <div class="cart_item_title">Total</div>
+                    <div class="cart_item_text">${{#subtotal ../carritoTecnologia Id_Tecnologia
+                      Precio}}
+                      {{/subtotal}} MX</div>
+                  </div>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/checklength}}
+          <div class="order_total">
+            <div class="order_total_content text-md-right">
+              <div class="order_total_title">Total:</div>
+              <div class="order_total_amount">${{total}} MX</div>
             </div>
+          </div>
+          <div class="cart_buttons">
+            <!-- Clases simplificadas -->
+            <button type="button" onclick="location.href='/carrito/limpiar';" class="cart_button_clear">Vaciar
+              carrito</button>
+            <button type="button" onclick="location.href='/carrito/comprar';"
+              class="cart_button_checkout">Comprar</button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 {{else}}
 <div class="container" style="margin-bottom: 25%; margin-top: 2%;">
-    <div class="success">Carrito vacío, agregue productos.</div>
+  <div class="success">Carrito vacío, agregue productos.</div>
 </div>
 {{/if}}

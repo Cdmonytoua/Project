@@ -1,37 +1,53 @@
 <div class="libros-page">
-<div class="container">
+  <div class="container">
     <hr>
     <div class="row">
-        {{#each libros}}
-        <div class="col-md-3 product-grid">
-            <div class="image">
-                <a href="/libro/{{Id_Libro}}">
-                    <img src="{{Imagen}}" class="w-100 img-fluid" alt="{{Nombre}}"> <div class="overlay">
-                        <div class="detail">Ver detalles</div>
-                    </div>
-                </a>
+      {{#each libros}}
+      <div class="col-6 col-md-3 product-grid">
+        <div class="image">
+          <a href="/libro/{{Id_Libro}}">
+            <img src="{{Imagen}}" class="w-100 img-fluid" alt="{{Nombre}}">
+            <div class="overlay">
+              <div class="detail">Ver detalles</div>
             </div>
-            <div class="product-info">
-                <h5 class="text-center book-title">{{Nombre}}</h5> <h5 class="text-center book-price">Precio: ${{Precio}}</h5> </div>
-            <form method="POST" action="/carrito/agregarlibro" class="add-to-cart-form"> <input type="hidden" name="cantidad" value="1">
-                <input type="hidden" name="id" value={{Id_Libro}}>
-                <button class="btn buy">AGREGAR AL CARRITO</button> </form>
+          </a>
         </div>
-        {{/each}}
+        <div class="product-info">
+          <h5 class="text-center book-title">{{Nombre}}</h5>
+          <h5 class="text-center book-price">Precio: ${{Precio}}</h5>
+        </div>
+        <form method="POST" action="/carrito/agregarlibro" class="add-to-cart-form"> <input type="hidden"
+            name="cantidad" value="1">
+          <input type="hidden" name="id" value={{Id_Libro}}>
+          <button class="btn buy">AGREGAR AL CARRITO</button>
+        </form>
+      </div>
+      {{/each}}
     </div>
-    <nav aria-label="Paginación de libros" style="margin-top: 2%;"> <ul class="pagination">
-            <li class="page-item {{#unless prev}}disabled{{/unless}}"> <a class="page-link" href="{{curr_page}}/?page={{prev}}" tabindex="-1">Anterior</a>
-            </li>
-            {{#each pages}}
-            {{#ifEquals this ../pag}}
-            <li class="page-item active" aria-current="page"><a class="page-link" href="{{../curr_page}}/?page={{this}}">{{this}} <span class="sr-only">(current)</span></a></li>
-            {{else}}
-            <li class="page-item"><a class="page-link" href="{{../curr_page}}/?page={{this}}">{{this}}</a></li>
-            {{/ifEquals}}
-            {{/each}}
-            <li class="page-item {{#unless next}}disabled{{/unless}}"> <a class="page-link" href="{{curr_page}}/?page={{next}}">Siguiente</a>
-            </li>
-        </ul>
+    <!-- INICIO DE LA MODIFICACIÓN -->
+    <nav aria-label="Paginación de libros" style="margin-top: 2%;">
+      <ul class="pagination">
+        <li class="page-item {{#unless prev}}disabled{{/unless}}">
+          <a class="page-link" href="{{curr_page}}/?page={{prev}}" tabindex="-1">Anterior</a>
+        </li>
+        {{#each pages}}
+        {{#if this.isEllipsis}}
+        <li class="page-item disabled"><span class="page-link">...</span></li>
+        {{else}}
+        {{#ifEquals this.num ../pag}}
+        <li class="page-item active" aria-current="page"><a class="page-link"
+            href="{{../curr_page}}/?page={{this.num}}">{{this.num}} <span class="sr-only">(current)</span></a>
+        </li>
+        {{else}}
+        <li class="page-item"><a class="page-link" href="{{../curr_page}}/?page={{this.num}}">{{this.num}}</a></li>
+        {{/ifEquals}}
+        {{/if}}
+        {{/each}}
+        <li class="page-item {{#unless next}}disabled{{/unless}}">
+          <a class="page-link" href="{{curr_page}}/?page={{next}}">Siguiente</a>
+        </li>
+      </ul>
     </nav>
-</div>
+    <!-- FIN DE LA MODIFICACIÓN -->
+  </div>
 </div>
