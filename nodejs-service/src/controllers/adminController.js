@@ -7,11 +7,11 @@ adminController.inicio = async (req, res) => {
     const autores = await adminModel.autores();
     res.render("tablas", { style: "tabla.css", layout: "admin", categorias, editoriales, autores });
 };
-adminController.libros = async (req, res) => {
+adminController.libro = async (req, res) => {
     const categorias = await adminModel.categorias();
     const editoriales = await adminModel.editoriales();
     const autores = await adminModel.autores();
-    res.render("admin_libros", { layout: "admin", categorias, editoriales, autores });
+    res.render("admin_libro", { layout: "admin", categorias, editoriales, autores });
 };
 adminController.remates = (req, res) => {
     res.render("admin_remate", { layout: "admin" });
