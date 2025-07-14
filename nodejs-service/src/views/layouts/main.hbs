@@ -20,6 +20,8 @@
   {{#if style}}
   <link rel="stylesheet" href="/css/{{style}}">
   {{/if}}
+  <link rel="stylesheet" href="/css/exito.css">
+  <link rel="stylesheet" href="/css/error.css">
 </head>
 
 <body>
@@ -102,6 +104,7 @@
 
     </div>
   </nav>
+  {{>exito}}
   {{>error}}
   <main class="flex-grow-1">
     {{{ body }}}
@@ -125,7 +128,7 @@
       <div class="row">
         <div class="col-md-6 mb-3 mb-md-0">
           <ul class="sinvineta text-center text-md-left">
-            <li><a class="linkss" href="Contectenos.html">Contactos</a></li>
+            <li><a class="linkss" href="/contacto">Contactos</a></li>
             <li><a class="linkss" href="Politicas.html">Políticas de privacidad</a></li>
             <li><a class="linkss" href="Sucursales.html">Sucursales</a></li>
           </ul>

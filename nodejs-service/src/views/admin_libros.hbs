@@ -1,0 +1,203 @@
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2><b>Libros</b></h2>
+                    </div>
+                    <div class="col-sm-4">
+                        <form action="/admin/libros" method="GET" class="form-inline float-sm-right">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="search" name="search"
+                                    placeholder="Buscar..." value="{{search}}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Autor</th>
+                        <th>Editorial</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th style="max-width: 200px;">Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="table">
+                    {{#each libros}}
+                    <tr data-id="{{Id_Libro}}">
+                        <td>{{Id_Libro}}</td>
+                        <td>{{Nombre}}</td>
+                        <td>{{Autor}}</td>
+                        <td>{{Editorial}}</td>
+                        <td>${{Precio}}</td>
+                        <td>{{Cantidad}}</td>
+                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                            {{Imagen}}</td>
+                        <td>
+                            <a href="#editLibro" class="edit" data-toggle="modal" data-id="{{Id_Libro}}"
+                                data-nombre="{{Nombre}}" data-categoria="{{Categoria_ID}}" data-autor="{{Autor_ID}}"
+                                data-editorial="{{Editorial_ID}}" data-anio="{{Anio}}" data-cantidad="{{Cantidad}}"
+                                data-precio="{{Precio}}" data-imagen="{{Imagen}}"><i class="material-icons"
+                                    data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#eliminarLibro" class="delete" data-toggle="modal" data-id="{{Id_Libro}}"><i
+                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <ul class="pagination">
+                <li class="page-item {{#unless prevPage}}disabled{{/unless}}">
+                    <a class="page-link" href="/admin/libros?page={{prevPage}}{{#if search}}&search={{search}}{{/if}}" tabindex="-1">Anterior</a>
+                </li>
+                {{#each pages}}
+                {{#if isEllipsis}}
+                <li class="page-item disabled"><span class="page-link">...</span></li>
+                {{else}}
+                <li class="page-item {{#if (eq num ../currentPage)}}active{{/if}}">
+                    <a class="page-link"
+                        href="/admin/libros?page={{num}}{{#if ../search}}&search={{../search}}{{/if}}">{{num}}</a>
+                </li>
+                {{/if}}
+                {{/each}}
+                <li class="page-item {{#unless nextPage}}disabled{{/unless}}">
+                    <a class="page-link" href="/admin/libros?page={{nextPage}}{{#if search}}&search={{search}}{{/if}}">Siguiente</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal HTML -->
+<div id="editLibro" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="" method="POST" id="editForm">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar libro</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" name="Nombre" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select name="Categoria" class="form-control" required>
+                            {{#each categorias}}
+                            <option value="{{Id_Categoria}}">{{Nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Autor</label>
+                        <select name="Autor" class="form-control" required>
+                            {{#each autores}}
+                            <option value="{{Id_Autor}}">{{Nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Editorial</label>
+                        <select name="Editorial" class="form-control" required>
+                            {{#each editoriales}}
+                            <option value="{{Id_Editorial}}">{{Nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Año</label>
+                        <input type="number" name="Anio" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Cantidad</label>
+                        <input type="text" name="Cantidad" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Precio</label>
+                        <input type="text" name="Precio" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>URL portada</label>
+                        <input type="text" name="Imagen" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="submit" class="btn btn-info" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="eliminarLibro" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="" method="GET" id="deleteForm">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar libro</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que quieres eliminar este registro?</p>
+                    <p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="submit" class="btn btn-danger" value="Eliminar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+
+        $('#editLibro').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            var nombre = button.data('nombre');
+            var categoria = button.data('categoria');
+            var autor = button.data('autor');
+            var editorial = button.data('editorial');
+            var anio = button.data('anio');
+            var cantidad = button.data('cantidad');
+            var precio = button.data('precio');
+            var imagen = button.data('imagen');
+
+            var modal = $(this);
+            modal.find('form').attr('action', '/admin/libros/editar/' + id);
+            modal.find('.modal-body input[name="Nombre"]').val(nombre);
+            modal.find('.modal-body select[name="Categoria"]').val(categoria);
+            modal.find('.modal-body select[name="Autor"]').val(autor);
+            modal.find('.modal-body select[name="Editorial"]').val(editorial);
+            modal.find('.modal-body input[name="Anio"]').val(anio);
+            modal.find('.modal-body input[name="Cantidad"]').val(cantidad);
+            modal.find('.modal-body input[name="Precio"]').val(precio);
+            modal.find('.modal-body input[name="Imagen"]').val(imagen);
+        });
+
+        $('#eliminarLibro').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            var modal = $(this);
+            modal.find('form').attr('action', '/admin/libros/eliminar/' + id);
+        });
+
+    });
+</script>

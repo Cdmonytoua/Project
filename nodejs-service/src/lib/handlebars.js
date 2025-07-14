@@ -25,4 +25,5 @@ helpers.count = function (carrito, id) {
 helpers.subtotal = function (carrito, id, precio) {
     return Math.round((carrito[id] * precio) * 100) / 100;
 };
+helpers.eq = (a, b) => a == b;
 module.exports = helpers;

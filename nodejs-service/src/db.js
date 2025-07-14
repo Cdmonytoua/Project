@@ -1,24 +1,23 @@
-const mysql = require('mysql');
+const mysql = require('mysql2/promise');
 const { database } = require('./keys');
-const { promisify } = require('util');
-const pool = mysql.createPool(database); 
-pool.getConnection((err, conn) => {
-    if(err){
-        if(err.code === 'PROTOCOL_CONNECTION_LOST'){
+
+const pool = mysql.createPool(database);
+
+(async () => {
+    try {
+        const conn = await pool.getConnection();
+        console.log('Connected to database');
+        conn.release();
+    } catch (err) {
+        console.error('Error connecting to database:', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
             console.error("CONNECTION LOST");
-        }
-        if(err.code === 'ER_CON_COUNT_ERROR'){
+        } else if (err.code === 'ER_CON_COUNT_ERROR') {
             console.error("MANY CONNECTIONS");
-        }
-        if(err.code == 'ECONNREFUSED'){
+        } else if (err.code === 'ECONNREFUSED') {
             console.error("CONN REFUSED");
         }
-    }else if(conn){
-        conn.release();
-        console.log('Connected'); 
     }
-    return;
-});
+})();
 
-pool.query = promisify(pool.query);
 module.exports = pool;

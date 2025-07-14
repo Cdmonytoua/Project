@@ -1,32 +1,43 @@
-const { carrito } = require('../controllers/carritoController');
 const pool = require('../db');
-var carritoModel = function () { };
+const carritoModel = {};
 
-carritoModel.carritoLibros = async (ids, result) => {
-    await pool.query('SELECT * FROM libros WHERE Id_Libro IN (' + ids + ')', (err, rows, field) => {
-        if (err) {
-            return result(err, rows);
-        }
-        return result(err, rows);
-    });
+const allowedTables = {
+    libros: 'Id_Libro',
+    remates: 'Id_Remate',
+    tecnologia: 'Id_Tecnologia'
 };
-carritoModel.carritoRemates = async (ids, result) => {
-    await pool.query('SELECT * FROM remates WHERE Id_Remate IN (' + ids + ')', (err, rows, field) => {
-        if (err) {
-            return result(err, rows);
-        }
-        return result(err, rows);
-    });
+
+async function fetchByIds(table, ids) {
+    if (!allowedTables[table]) {
+        throw new Error(`Tabla no permitida: ${table}`);
+    }
+    if (!Array.isArray(ids) || ids.length === 0) {
+        return [];
+    }
+
+    const column = allowedTables[table];
+    const sql = pool.format('SELECT * FROM ?? WHERE ?? IN (?)', [table, column, ids]);
+
+    const [rows] = await pool.query(sql);
+    return rows;
+}
+
+carritoModel.carritoLibros = async (ids) => {
+    return await fetchByIds('libros', ids);
 };
-carritoModel.carritoTecnologia = async (ids, result) => {
-    await pool.query('SELECT * FROM tecnologia WHERE Id_Tecnologia IN (' + ids + ')', (err, rows, field) => {
-        if (err) {
-            return result(err, rows);
-        }
-        return result(err, rows);
-    });
+
+carritoModel.carritoRemates = async (ids) => {
+    return await fetchByIds('remates', ids);
 };
+
+carritoModel.carritoTecnologia = async (ids) => {
+    return await fetchByIds('tecnologia', ids);
+};
+
 carritoModel.precioLibro = async (id) => {
-    return await pool.query("SELECT Precio FROM libros WHERE Id_Libro = ?", id);
+    const sql = 'SELECT Precio FROM libros WHERE Id_Libro = ?';
+    const [rows] = await pool.query(sql, [id]);
+    return rows;
 };
+
 module.exports = carritoModel;

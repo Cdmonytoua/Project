@@ -20,15 +20,24 @@ helpers.isLogged = (req, res, next) => {
     if (req.isAuthenticated()) {
         return next();
     } else {
+        req.session.returnTo = req.originalUrl;
         req.flash('error', 'Necesitas iniciar sesión primero');
-        return res.redirect('/');
+        return res.redirect('/login');
     }
 };
-helpers.isAdmin = (req, res, next) => {
-    if (req.isAuthenticated() && req.user.Rol == 'admin') {
-        return next();
-    }
-    return res.redirect('/');
+
+helpers.hasRole = (...roles) => {
+    return (req, res, next) => {
+        if (!req.user) {
+            return res.redirect('/');
+        }
+        const userRole = req.user.Rol;
+        if (roles.includes(userRole)) {
+            return next();
+        }
+        req.flash('error', 'No tienes permiso para acceder a esta página');
+        return res.redirect('/');
+    };
 };
 helpers.isnotLogged = (req, res, next) => {
     if (!req.isAuthenticated()) {

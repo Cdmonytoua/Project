@@ -1,12 +1,12 @@
+require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
 const express = require('express'),
-morgan = require('morgan'),
-app = express(),
-path = require('path'),
-hbs = require('express-handlebars'),
-flash = require('connect-flash'),
-session = require('express-session'),
-mysqlsession = require('express-mysql-session'),
-passport = require('passport');
+    morgan = require('morgan'),
+    app = express(),
+    path = require('path'),
+    hbs = require('express-handlebars'),
+    flash = require('connect-flash'),
+    session = require('express-session'),
+    passport = require('passport');
 
 const MySQLStore = require('express-mysql-session')(session);
 
@@ -25,20 +25,26 @@ app.engine(".hbs", hbs.engine({
 }));
 app.set('view engine', '.hbs');
 app.use(morgan('dev'));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+console.log(process.env.SESSION_SECRET);
+if (!process.env.SESSION_SECRET) {
+    console.error('FATAL ERROR: SESSION_SECRET is not defined.');
+    process.exit(1);
+}
 app.use(session({
-  secret: 'mysession',
-  resave: false,
-  saveUninitialized: true,
-  store: sessionStore
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: sessionStore
 }));
 
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req, res, next) => {
+    
     res.locals.session = req.session;
     app.locals.error = req.flash('error');
     app.locals.exito = req.flash('exito');
@@ -51,19 +57,19 @@ app.use(require('./routes/admin'));
 app.use(require('./routes/carrito'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
     res.status(404);
     if (req.accepts('html')) {
-      res.render('404', { url: req.url, layout: false});
-      return;
+        res.render('404', { url: req.url, layout: false });
+        return;
     }
     if (req.accepts('json')) {
-      res.send({ error: 'Not found' });
-      return;
+        res.send({ error: 'Not found' });
+        return;
     }
     res.type('txt').send('Not found');
 });
 
 app.listen(app.get('port'), '0.0.0.0', () => {
-  console.log("Listen on port: " + app.get('port'));
+    console.log("Listen on port: " + app.get('port'));
 });

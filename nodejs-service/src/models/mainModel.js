@@ -1,62 +1,94 @@
 const pool = require('../db');
-const { search } = require('../routes');
-var mainModel = function () { };
-mainModel.libros = (limit, offset) => {
-    return pool.query("SELECT * FROM libros LIMIT " + limit + " OFFSET " + offset);
+const mainModel = {};
+
+mainModel.libros = async (limit, offset) => {
+    const [rows] = await pool.query("SELECT * FROM libros LIMIT ? OFFSET ?", [limit, offset]);
+    return rows;
 };
-mainModel.cantidadDeLibros = () => {
-    return pool.query("SELECT COUNT(*) as cantidad FROM libros");
+
+mainModel.cantidadDeLibros = async (search) => {
+    let sql = "SELECT COUNT(*) AS cantidad FROM libros";
+    const params = [];
+    if (search) {
+        sql += " WHERE nombre LIKE ?";
+        params.push(`%${search}%`);
+    }
+    const [rows] = await pool.query(sql, params);
+    return rows;
 };
-mainModel.pagCategorias = (id, limit, offset) => {
-    return pool.query("SELECT * FROM libros WHERE categoria = " + id + " LIMIT " + limit + " OFFSET " + offset);
+
+mainModel.pagCategorias = async (id, limit, offset) => {
+    const [rows] = await pool.query(
+        "SELECT * FROM libros WHERE categoria = ? LIMIT ? OFFSET ?",
+        [id, limit, offset]
+    );
+    return rows;
 };
-mainModel.pagAutores = (id, limit, offset) => {
-    return pool.query("SELECT * FROM libros WHERE autor = " + id + " LIMIT " + limit + " OFFSET " + offset);
+
+mainModel.pagAutores = async (id, limit, offset) => {
+    const [rows] = await pool.query(
+        "SELECT * FROM libros WHERE autor = ? LIMIT ? OFFSET ?",
+        [id, limit, offset]
+    );
+    return rows;
 };
-mainModel.pagEditorial = (id, limit, offset) => {
-    return pool.query("SELECT * FROM libros WHERE editorial = " + id + " LIMIT " + limit + " OFFSET " + offset);
+
+mainModel.pagEditorial = async (id, limit, offset) => {
+    const [rows] = await pool.query(
+        "SELECT * FROM libros WHERE editorial = ? LIMIT ? OFFSET ?",
+        [id, limit, offset]
+    );
+    return rows;
 };
+
 mainModel.pagBusqueda = async (substr, limit, offset) => {
-    return pool.query('SELECT * FROM libros WHERE nombre LIKE "' + substr + '" LIMIT ' + limit + ' OFFSET ' + offset);
+    const searchTerm = `%${substr}%`;
+    const [rows] = await pool.query(
+        "SELECT * FROM libros WHERE nombre LIKE ? LIMIT ? OFFSET ?",
+        [searchTerm, limit, offset]
+    );
+    return rows;
 };
-mainModel.librosPorIDCategoria = async (id, result) => {
-    await pool.query('SELECT * FROM libros WHERE categoria = ?', id, (err, rows, field) => {
-        return result(err, rows);
-    });
+
+mainModel.librosPorIDCategoria = async (id) => {
+    const [rows] = await pool.query("SELECT * FROM libros WHERE categoria = ?", [id]);
+    return rows;
 };
-mainModel.librosPorIDAutor = async (id, result) => {
-    await pool.query('SELECT * FROM libros WHERE autor = ?', id, (err, rows, field) => {
-        return result(err, rows);
-    });
+
+mainModel.librosPorIDAutor = async (id) => {
+    const [rows] = await pool.query("SELECT * FROM libros WHERE autor = ?", [id]);
+    return rows;
 };
-mainModel.librosPorIDEditorial = async (id, result) => {
-    await pool.query('SELECT * FROM libros WHERE editorial = ?', id, (err, rows, field) => {
-        return result(err, rows);
-    });
+
+mainModel.librosPorIDEditorial = async (id) => {
+    const [rows] = await pool.query("SELECT * FROM libros WHERE editorial = ?", [id]);
+    return rows;
 };
-mainModel.librosBusqueda = async (substr, result) => {
-    await pool.query('SELECT * FROM libros WHERE nombre LIKE ?', substr, (err, rows, field) => {
-        return result(err, rows);
-    });
+
+mainModel.librosBusqueda = async (substr) => {
+    const searchTerm = `%${substr}%`;
+    const [rows] = await pool.query("SELECT * FROM libros WHERE nombre LIKE ?", [searchTerm]);
+    return rows;
 };
-mainModel.remates = async (result) => {
-    await pool.query("SELECT * FROM remates", (err, rows, field) => {
-        return result(err, rows);
-    });
+
+mainModel.remates = async () => {
+    const [rows] = await pool.query("SELECT * FROM remates");
+    return rows;
 };
-mainModel.tecnologia = async (result) => {
-    await pool.query("SELECT * FROM tecnologia", (err, rows, field) => {
-        return result(err, rows);
-    });
+
+mainModel.tecnologia = async () => {
+    const [rows] = await pool.query("SELECT * FROM tecnologia");
+    return rows;
 };
-mainModel.novedades = async (result) => {
-    await pool.query("SELECT * FROM libros ORDER BY Id_Libro DESC LIMIT 12", (err, rows, field) => {
-        return result(err, rows);
-    });
+
+mainModel.novedades = async () => {
+    const [rows] = await pool.query("SELECT * FROM libros ORDER BY Id_Libro DESC LIMIT 12");
+    return rows;
 };
-mainModel.libro = async (id, result) => {
-    await pool.query("SELECT * FROM libros WHERE Id_Libro = ?", id, (err, rows, field) => {
-        return result(err, rows);
-    });
-}
+
+mainModel.libro = async (id) => {
+    const [rows] = await pool.query("SELECT * FROM libros WHERE Id_Libro = ?", [id]);
+    return rows;
+};
+
 module.exports = mainModel;
